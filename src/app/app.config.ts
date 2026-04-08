@@ -2,7 +2,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
-import { provideIcons } from '@ng-icons/core';
+import { NgIconsModule } from '@ng-icons/core';
 import {
   featherAlertCircle,
   featherArchive,
@@ -13,19 +13,21 @@ import {
 import { routes } from './app.routes';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
+const ngIconsModule = NgIconsModule.withIcons({
+  featherEdit,
+  featherCheck,
+  featherX,
+  featherArchive,
+  featherAlertCircle
+});
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(withFetch()),
     provideAnimations(),
-    provideIcons({
-      featherEdit,
-      featherCheck,
-      featherX,
-      featherArchive,
-      featherAlertCircle
-    }),
+    ...(ngIconsModule.providers || []),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

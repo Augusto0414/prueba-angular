@@ -25,9 +25,4 @@ export class StatsContainerComponent {
   inactiveCategories() {
     return this.categories().filter(cat => !cat.isActive).length;
   }
-
-  // Nombres de iconos como strings
-  featherArchive = 'featherArchive';
-  featherCheck = 'featherCheck';
-  featherAlertCircle = 'featherAlertCircle';
 }

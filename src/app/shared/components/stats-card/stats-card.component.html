@@ -1,0 +1,11 @@
+<div class="stats-card">
+  <div class="stats-header">
+    <h3 class="stats-title">{{ title() }}</h3>
+    @if (icon()) {
+      <div class="stats-icon" [style.background-color]="backgroundColor()">
+        <ng-icon [name]="icon()"></ng-icon>
+      </div>
+    }
+  </div>
+  <div class="stats-value">{{ value() }}</div>
+</div>

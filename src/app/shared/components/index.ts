@@ -1,2 +1,3 @@
-// Shared Components (to be populated)\n
+export * from './stats-card/stats-card.component';
+export * from './stats-container/stats-container.component';
 

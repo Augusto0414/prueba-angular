@@ -4,10 +4,12 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { NgIconsModule } from '@ng-icons/core';
-import { 
-  featherEdit as iconEdit,
+import {
+  featherAlertCircle as iconAlertCircle,
+  featherArchive as iconArchive,
   featherCheck as iconCheck,
-  featherX as iconX 
+  featherEdit as iconEdit,
+  featherX as iconX
 } from '@ng-icons/feather-icons';
 import { routes } from './app.routes';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
@@ -15,7 +17,9 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 const ngIconsConfig = NgIconsModule.withIcons({ 
   featherEdit: iconEdit,
   featherCheck: iconCheck,
-  featherX: iconX
+  featherX: iconX,
+  featherArchive: iconArchive,
+  featherAlertCircle: iconAlertCircle
 });
 
 export const appConfig: ApplicationConfig = {

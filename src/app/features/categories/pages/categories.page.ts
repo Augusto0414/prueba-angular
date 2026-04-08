@@ -8,13 +8,14 @@ import {
 } from '@angular/core';
 import { CategoryService } from '../../../core/sevices/category.service';
 import { NotificationService } from '../../../core/sevices/notification.service';
+import { StatsContainerComponent } from '../../../shared/components';
 import { CategoryFormComponent, CategoryTableComponent } from '../components';
 import { Category } from '../models/category.model';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [CommonModule, CategoryTableComponent, CategoryFormComponent],
+  imports: [CommonModule, CategoryTableComponent, CategoryFormComponent, StatsContainerComponent],
   templateUrl: './categories.page.html',
   styleUrl: './categories.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

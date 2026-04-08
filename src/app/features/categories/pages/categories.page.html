@@ -23,6 +23,13 @@
     </div>
   }
 
+  <div class="stats-section">
+    <app-stats-container 
+      [categories]="categories()"
+      aria-label="Resumen de estadísticas de categorías"
+    />
+  </div>
+
   <div class="table-section">
     @if (isLoading()) {
       <div class="loading">

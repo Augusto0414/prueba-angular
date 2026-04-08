@@ -68,6 +68,11 @@ h2 {
     border: 1px solid #007bff;
 }
 
+.stats-section {
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+}
+
 .table-section {
     margin-top: 2rem;
 }

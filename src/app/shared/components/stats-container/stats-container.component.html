@@ -1,0 +1,20 @@
+<div class="stats-grid">
+  <app-stats-card
+    [title]="'Total de Categorías'"
+    [value]="totalCategories()"
+    [icon]="'featherArchive'"
+    [backgroundColor]="'#007bff'"
+  />
+  <app-stats-card
+    [title]="'Categorías Activas'"
+    [value]="activeCategories()"
+    [icon]="'featherCheck'"
+    [backgroundColor]="'#28a745'"
+  />
+  <app-stats-card
+    [title]="'Categorías Inactivas'"
+    [value]="inactiveCategories()"
+    [icon]="'featherAlertCircle'"
+    [backgroundColor]="'#ffc107'"
+  />
+</div>

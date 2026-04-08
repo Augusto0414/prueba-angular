@@ -1,6 +1,6 @@
 {
     "buildCommand": "npm run build",
-    "outputDirectory": "dist/CategoryApp",
+    "outputDirectory": "dist",
     "framework": "angular",
     "cleanUrls": true,
     "rewrites": [

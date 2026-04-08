@@ -30,20 +30,11 @@ jobs:
       - name: Verify build
         run: |
           echo "Checking build artifacts..."
-          ls -la dist/
+          ls -la dist/CategoryApp/browser/
           echo "Build verification complete!"
-
-      - name: Install Vercel CLI
-        run: npm install -g vercel@latest
-
-      - name: Pull Vercel Project Info
-        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build with Vercel CLI
-        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
         run: |
-          npx vercel deploy --prebuilt --prod \
+          npx vercel deploy --prod dist/CategoryApp/browser \
             --token=${{ secrets.VERCEL_TOKEN }} \
             --yes

@@ -58,6 +58,59 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
+## Despliegue en Vercel
+
+### Requisitos previos
+1. Cuenta en [Vercel](https://vercel.com)
+2. Token de Vercel (generado en Account Settings)
+3. Organización ID de Vercel (si aplica)
+
+### Configuración automática con GitHub Actions
+
+El proyecto está configurado con GitHub Actions para desplegarse automáticamente a Vercel en cada push a `main`.
+
+#### Pasos de configuración:
+
+1. **Crear secret `VERCEL_TOKEN` en GitHub**:
+   - Ve a tu repositorio → Settings → Secrets and variables → Actions
+   - Click en "New repository secret"
+   - Name: `VERCEL_TOKEN`
+   - Value: Tu token de Vercel
+
+2. **Crear secret `VERCEL_ORG_ID`** (opcional, solo si usas org):
+   - Name: `VERCEL_ORG_ID`
+   - Value: Tu ID de organización en Vercel
+
+3. **Crear secret `VERCEL_PROJECT_ID`** (opcional):
+   - Name: `VERCEL_PROJECT_ID`
+   - Value: Tu ID de proyecto en Vercel
+
+#### Archivos de configuración:
+- `.github/workflows/vercel.yml` - GitHub Actions workflow
+- `vercel.json` - Configuración de Vercel
+- `angular.json` - Configuración de Angular CLI
+- `.vercelignore` - Archivos ignorados en Vercel
+
+### Despliegue manual
+
+```bash
+# 1. Instalar Vercel CLI
+npm install -g vercel
+
+# 2. Login en Vercel
+vercel login
+
+# 3. Desplegar a producción
+vercel --prod
+```
+
+### Características del despliegue:
+- ✅ SPA routing configurado (Angular Router redirige a index.html)
+- ✅ Clean URLs habilitadas
+- ✅ Minificación y optimización de assets
+- ✅ Cache headers configurados
+- ✅ Node.js 20+ requerido
+
 ## Estructura del Proyecto
 
 ```

@@ -1,12 +1,23 @@
 {
     "buildCommand": "npm run build",
     "outputDirectory": "dist",
-    "framework": "angular",
     "cleanUrls": true,
-    "rewrites": [
+    "routes": [
         {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "src": "/index.html",
+            "status": 200
+        },
+        {
+            "src": "/(.*\\.[a-z]+)$",
+            "dest": "/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html",
+            "status": 200
         }
-    ]
+    ],
+    "env": {
+        "SKIP_ENV_VALIDATION": "true"
+    }
 }

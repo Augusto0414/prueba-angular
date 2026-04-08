@@ -1,11 +1,19 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
+    provideHttpClient(withFetch()),
+
+    // HasStrategy
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
   ]
 };

@@ -1,0 +1,48 @@
+<div class="categories-container">
+  <div class="page-header">
+    <h1>Gestión de Categorías</h1>
+    <button
+      class="btn btn-primary"
+      (click)="openCreateForm()"
+      aria-label="Crear nueva categoría"
+    >
+      + Nueva Categoría
+    </button>
+  </div>
+
+  @if (isFormOpen()) {
+    <div class="form-section">
+      <h2>{{ isEditing() ? 'Editar Categoría' : 'Crear Nueva Categoría' }}</h2>
+      <app-category-form
+        [category]="selectedCategory()"
+        [isEditing]="isEditing()"
+        [isSubmitting]="isSubmitting()"
+        (submit)="onFormSubmit($event)"
+        (cancel)="closeForm()"
+      />
+    </div>
+  }
+
+  <div class="table-section">
+    @if (isLoading()) {
+      <div class="loading">
+        <p>Cargando categorías...</p>
+      </div>
+    } @else if (error()) {
+      <div class="error-message">
+        <p>Error: {{ error() }}</p>
+        <button class="btn btn-secondary" (click)="loadCategories()">
+          Reintentar
+        </button>
+      </div>
+    } @else {
+      <app-category-table
+        [categories]="categories()"
+        (edit)="onEdit($event)"
+        (toggleStatus)="onToggleStatus($event)"
+        (delete)="onDelete($event)"
+        (search)="onSearch($event)"
+      />
+    }
+  </div>
+</div>

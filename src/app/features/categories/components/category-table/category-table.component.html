@@ -1,0 +1,81 @@
+<div class="search-container">
+  <input
+    type="text"
+    placeholder="Buscar por nombre o código..."
+    class="search-input"
+    [ngModel]="searchTerm()"
+    (input)="searchTerm.set($any($event.target).value); onSearch()"
+    aria-label="Buscar categorías"
+  />
+</div>
+
+@if (filteredCategories().length === 0) {
+  <div class="no-data">
+    <p>No hay categorías disponibles</p>
+  </div>
+} @else {
+  <div class="table-container">
+    <table class="category-table" role="table">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (category of filteredCategories(); track category.id) {
+          <tr>
+            <td>{{ category.code }}</td>
+            <td>{{ category.name }}</td>
+            <td>
+              <span
+                class="status-badge"
+                [class.active]="category.isActive"
+                [class.inactive]="!category.isActive"
+              >
+                {{ category.isActive ? 'Activa' : 'Inactiva' }}
+              </span>
+            </td>
+            <td>
+              <div class="actions">
+                <button
+                  class="btn-icon edit"
+                  (click)="onEdit(category)"
+                  title="Editar categoría"
+                  aria-label="Editar categoría {{ category.name }}"
+                  type="button"
+                >
+                  <ng-icon [name]="featherEdit"></ng-icon>
+                </button>
+                <button
+                  class="btn-icon toggle"
+                  (click)="onToggleStatus(category.id)"
+                  title="Cambiar estado"
+                  [attr.aria-label]="
+                    (category.isActive ? 'Desactivar' : 'Activar') +
+                    ' categoría ' +
+                    category.name
+                  "
+                  type="button"
+                >
+                  <ng-icon [name]="category.isActive ? featherCheck : featherX"></ng-icon>
+                </button>
+                <button
+                  class="btn-icon delete"
+                  (click)="onDelete(category.id)"
+                  title="Eliminar categoría"
+                  aria-label="Eliminar categoría {{ category.name }}"
+                  type="button"
+                >
+                  <ng-icon [name]="featherX"></ng-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

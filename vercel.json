@@ -2,6 +2,7 @@
     "buildCommand": "npm run build",
     "outputDirectory": "dist/CategoryApp",
     "framework": "angular",
+    "cleanUrls": true,
     "rewrites": [
         {
             "source": "/(.*)",

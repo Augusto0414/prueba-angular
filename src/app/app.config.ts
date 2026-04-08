@@ -1,4 +1,3 @@
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -29,10 +28,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideAnimations(),
     ...(ngIconsConfig.providers || []),
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

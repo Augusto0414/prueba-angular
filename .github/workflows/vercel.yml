@@ -31,6 +31,8 @@ jobs:
         run: |
           echo "Checking build artifacts..."
           ls -la dist/CategoryApp/browser/
+          echo "Copying vercel.json to deployment directory"
+          cp vercel.json dist/CategoryApp/browser/
           echo "Build verification complete!"
 
       - name: Deploy to Vercel
